@@ -45,6 +45,13 @@ module CarrierWave
         def content_type
           grid.open(@path, 'r').content_type
         end
+		
+        def md5
+          command = BSON::OrderedHash.new
+          command['filemd5'] = @path
+          command['root'] = 'fs'
+          database.command(command)
+        end
 
       protected
 
