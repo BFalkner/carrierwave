@@ -50,7 +50,7 @@ module CarrierWave
           command = BSON::OrderedHash.new
           command['filemd5'] = @path
           command['root'] = 'fs'
-          database.command(command)
+          database.command(command)['md5']
         end
 
       protected
